@@ -21,11 +21,6 @@ public class TestEndpoint {
         return "ça va ?";
     }
 
-    @RequestMapping(value = "/p", method = RequestMethod.POST)
-    public String p () {
-        return "c good";
-    }
-
     @RequestMapping(value = "/push", method = RequestMethod.POST)
     public ResponseEntity<Response> push(@RequestBody Item item) {
         return ResponseEntity.ok(new Response("Handled : " + item.input));
