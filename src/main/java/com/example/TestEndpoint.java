@@ -21,7 +21,7 @@ public class TestEndpoint {
 
     @PostConstruct
     public void init() {
-        System.out.println("salut ça va tak tak ?");
+        System.out.println("salut ça va ?");
     }
 
     @RequestMapping("/salut")
