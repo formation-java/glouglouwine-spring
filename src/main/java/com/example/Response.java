@@ -2,9 +2,11 @@ package com.example;
 
 public class Response {
 
-    public String text;
+    public int global;
+    public int requestContext;
 
-    public Response(String text) {
-        this.text = text;
+    public Response(int global, int requestContext) {
+        this.global = global;
+        this.requestContext = requestContext;
     }
 }
