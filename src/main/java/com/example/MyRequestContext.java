@@ -1,12 +1,22 @@
 package com.example;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.RequestScope;
 
 @Component
-@RequestScope
-public class MyRequestContext {
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
+public class MyRequestContext implements ContextInterface {
 
-    public int modifiedInput = 0;
+    private int modifiedInput = 0;
 
+    @Override
+    public int getModifiedInput() {
+        return modifiedInput;
+    }
+
+    @Override
+    public void setModifiedInput(int modifiedInput) {
+        this.modifiedInput = modifiedInput;
+    }
 }

@@ -32,7 +32,7 @@ public class TestEndpoint {
     @RequestMapping(value = "/push", method = RequestMethod.POST)
     public ResponseEntity<Response> push(@RequestBody Item item) {
         testService.doStuff(item.input);
-        return ResponseEntity.ok(new Response(myGlobalState.getValue(), myRequestContext.modifiedInput));
+        return ResponseEntity.ok(new Response(myGlobalState.getValue(), myRequestContext.getModifiedInput()));
     }
 
 }

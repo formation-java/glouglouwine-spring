@@ -14,7 +14,7 @@ public class TestService {
 
     public void doStuff(int input) {
         myGlobalState.setValue(myGlobalState.getValue() + input);
-        requestContext.modifiedInput += input;
+        requestContext.setModifiedInput(requestContext.getModifiedInput() + input);
     }
 
 }
