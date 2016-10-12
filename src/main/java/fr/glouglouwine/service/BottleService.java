@@ -1,6 +1,10 @@
-package fr.glouglouwine;
+package fr.glouglouwine.service;
 
+import fr.glouglouwine.context.ApplicationGlobalState;
+import fr.glouglouwine.context.UserRequestContext;
+import fr.glouglouwine.context.UserSession;
 import fr.glouglouwine.domain.Bottle;
+import fr.glouglouwine.repository.BottleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,16 +15,14 @@ import java.util.List;
 public class BottleService {
 
     @Autowired
-    private ApplicationGlobalState glouGlouGlobalState;
+    private BottleRepository bottleRepository;
 
+    @Autowired
+    private ApplicationGlobalState applicationGlobalState;
+    @Autowired
+    private UserSession userSession;
     @Autowired
     private UserRequestContext userRequestContext;
-
-    @Autowired
-    private UserSession glouGlouSession;
-
-    @Autowired
-    private BottleRepository bottleRepository;
 
     // TODO prefer fetch word
     // TODO rajouter transaction
@@ -31,6 +33,9 @@ public class BottleService {
 
     @Transactional
     public void addBottles(List<Bottle> bottles) {
+    applicationGlobalState.addBottles(bottles.size());
+    userSession.addBottles(bottles.size());
+    userRequestContext.addBottles(bottles.size());
         bottles.stream().forEach(bottleRepository::addBlotte);
     }
 

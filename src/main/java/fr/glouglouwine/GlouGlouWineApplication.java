@@ -13,10 +13,10 @@ import javax.sql.DataSource;
 import java.time.format.DateTimeFormatter;
 
 @SpringBootApplication
-public class GlouGlouApplication {
+public class GlouGlouWineApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GlouGlouApplication.class, args);
+        SpringApplication.run(GlouGlouWineApplication.class, args);
     }
 
     @Bean
