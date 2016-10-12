@@ -1,4 +1,4 @@
-package com.example;
+package fr.glouglouwine;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

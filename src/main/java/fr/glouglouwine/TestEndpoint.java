@@ -1,5 +1,6 @@
-package com.example;
+package fr.glouglouwine;
 
+import fr.glouglouwine.domain.AddBottleResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,15 +25,15 @@ public class TestEndpoint {
         System.out.println("salut ça va ?");
     }
 
-    @RequestMapping("/salut")
-    public String salut() {
-        return "ça va ?";
+    @RequestMapping("/")
+    public String glouGlou() {
+        return "glou glou";
     }
 
-    @RequestMapping(value = "/push", method = RequestMethod.POST)
-    public ResponseEntity<Response> push(@RequestBody Item item) {
+    @RequestMapping(value = "/bottle", method = RequestMethod.POST)
+    public ResponseEntity<AddBottleResponse> push(@RequestBody Item item) {
         testService.doStuff(item.input);
-        return ResponseEntity.ok(new Response(myGlobalState.getValue(), myRequestContext.getModifiedInput()));
+        return ResponseEntity.ok(new AddBottleResponse(myGlobalState.getValue(), myRequestContext.getModifiedInput()));
     }
 
 }

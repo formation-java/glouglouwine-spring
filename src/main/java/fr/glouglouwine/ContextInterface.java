@@ -1,5 +1,6 @@
-package com.example;
+package fr.glouglouwine;
 
+// dégager ?
 interface ContextInterface {
 
     int getModifiedInput();

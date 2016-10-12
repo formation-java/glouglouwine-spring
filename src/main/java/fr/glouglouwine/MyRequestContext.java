@@ -1,4 +1,4 @@
-package com.example;
+package fr.glouglouwine;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;

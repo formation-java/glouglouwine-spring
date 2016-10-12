@@ -1,4 +1,4 @@
-package com.example;
+package fr.glouglouwine;
 
 public class Item {
 

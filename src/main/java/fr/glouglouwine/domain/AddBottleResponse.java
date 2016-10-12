@@ -1,11 +1,11 @@
-package com.example;
+package fr.glouglouwine.domain;
 
-public class Response {
+public class AddBottleResponse {
 
     public int global;
     public int requestContext;
 
-    public Response(int global, int requestContext) {
+    public AddBottleResponse(int global, int requestContext) {
         this.global = global;
         this.requestContext = requestContext;
     }
