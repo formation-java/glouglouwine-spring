@@ -3,7 +3,7 @@ package fr.glouglouwine;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MyGlobalState {
+public class ApplicationGlobalState {
 
     private int value = 0;
 

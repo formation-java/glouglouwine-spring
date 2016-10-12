@@ -2,11 +2,11 @@ package fr.glouglouwine.domain;
 
 public class AddBottleResponse {
 
-    public int global;
-    public int requestContext;
+    public int addedBottles;
+    public int totalBottles;
 
-    public AddBottleResponse(int global, int requestContext) {
-        this.global = global;
-        this.requestContext = requestContext;
+    public AddBottleResponse(int addedBottles, int totalBottles) {
+        this.addedBottles = addedBottles;
+        this.totalBottles = totalBottles;
     }
 }
