@@ -5,7 +5,7 @@ import fr.glouglouwine.domain.Bottle;
 import java.util.List;
 
 public interface BottleRepository {
-    public abstract void addBlotte(Bottle bottle);
+    void addBlotte(Bottle bottle);
 
-    public abstract List<Bottle> fetchAll();
+    List<Bottle> fetchAll();
 }

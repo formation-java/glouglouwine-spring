@@ -1,34 +1,43 @@
 package fr.glouglouwine.service;
 
-import fr.glouglouwine.GlouGlouWineTestContext;
+import fr.glouglouwine.GlouGlouWineApplication;
 import fr.glouglouwine.domain.Bottle;
+import fr.glouglouwine.repository.BottleRepository;
+import fr.glouglouwine.repository.TestBottleRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationContextLoader;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.inject.Inject;
 import java.util.Arrays;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = GlouGlouWineTestContext.class, loader = SpringApplicationContextLoader.class)
-@WebAppConfiguration
-@ActiveProfiles("test")
+import static fr.glouglouwine.domain.GrapeTypes.MALBEC;
+
+@RunWith(SpringRunner.class)
 @SpringBootTest
 public class BottleServiceTest {
 
-    @Autowired
+    @Configuration
+    static class ContextConfiguration extends GlouGlouWineApplication {
+        @Bean
+        public BottleRepository bottleRepository() {
+            return new TestBottleRepository();
+        }
+    }
+
+//    @MockBean
+    @Inject
     private BottleService bottleService;
 
     @Test
     public void test() {
-        Bottle bottle = new Bottle();
+        Bottle bottle = new Bottle(1, "Saulnoz", MALBEC, "Chateau truc", 1979,
+                100,null, null);
         bottleService.addBottles(Arrays.asList(bottle));
-        Assert.assertEquals(bottle, bottleService.fetchAll().get(0));
+        Assert.assertEquals(bottle.getId(), bottleService.fetchAll().get(0).getId());
     }
 }
