@@ -4,7 +4,6 @@ import fr.glouglouwine.GlouGlouWineApplication;
 import fr.glouglouwine.domain.Bottle;
 import fr.glouglouwine.repository.BottleRepository;
 import fr.glouglouwine.repository.TestBottleRepository;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +15,7 @@ import javax.inject.Inject;
 import java.util.Arrays;
 
 import static fr.glouglouwine.domain.GrapeTypes.MALBEC;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -34,10 +34,10 @@ public class BottleServiceTest {
     private BottleService bottleService;
 
     @Test
-    public void test() {
+    public void test() throws Exception {
         Bottle bottle = new Bottle(1, "Saulnoz", MALBEC, "Chateau truc", 1979,
                 100,null, null);
         bottleService.addBottles(Arrays.asList(bottle));
-        Assert.assertEquals(bottle.getId(), bottleService.fetchAll().get(0).getId());
+        assertEquals(bottle.getId(), bottleService.fetchAll().get(0).getId());
     }
 }

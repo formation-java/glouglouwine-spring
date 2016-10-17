@@ -3,36 +3,30 @@ package fr.glouglouwine.endpoint;
 import fr.glouglouwine.context.ApplicationGlobalState;
 import fr.glouglouwine.context.UserRequestContext;
 import fr.glouglouwine.context.UserSession;
-import fr.glouglouwine.dto.AddBottleResponse;
 import fr.glouglouwine.domain.Bottle;
+import fr.glouglouwine.dto.AddBottleResponse;
 import fr.glouglouwine.service.BottleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import java.util.List;
 
 @RestController
 public class BottleEndpoint {
 
-    @Autowired
+    @Inject
     private BottleService bottleService;
 
-    @Autowired
+    @Inject
     private ApplicationGlobalState applicationGlobalState;
-    @Autowired
+    @Inject
     private UserSession userSession;
-    @Autowired
+    @Inject
     private UserRequestContext userRequestContext;
-
-    @PostConstruct
-    public void init() {
-        System.out.println("salut ça va ?");
-    }
 
     @RequestMapping("/")
     public String glouGlou() {
@@ -40,7 +34,6 @@ public class BottleEndpoint {
     }
 
     @RequestMapping("/bottle")
-    // TODO about jackson
     public List<Bottle> getBottles() {
         return bottleService.fetchAll();
     }
