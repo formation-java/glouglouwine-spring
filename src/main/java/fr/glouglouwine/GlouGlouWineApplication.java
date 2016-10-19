@@ -21,6 +21,7 @@ public class GlouGlouWineApplication {
         SpringApplication.run(GlouGlouWineApplication.class, args);
     }
 
+    // initialize or not
     @Value("${db.filesPath}")
     public String dbFilesPath;
 

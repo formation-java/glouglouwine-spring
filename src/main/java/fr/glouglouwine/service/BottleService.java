@@ -35,7 +35,7 @@ public class BottleService {
         userSession.addBottles(bottles.size());
         userRequestContext.addBottles(bottles.size());
         for (Bottle t : bottles) {
-            bottleRepository.addBlotte(t);
+            bottleRepository.addBottle(t);
         }
     }
 

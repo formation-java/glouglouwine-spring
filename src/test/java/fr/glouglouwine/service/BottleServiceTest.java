@@ -35,7 +35,7 @@ public class BottleServiceTest {
 
     @Test
     public void test() throws Exception {
-        Bottle bottle = new Bottle(1, "Saulnoz", MALBEC, "Chateau truc", 1979,
+        Bottle bottle = new Bottle(1, "Saulnoz", MALBEC, "Chateau truc", "1979",
                 100,null, null);
         bottleService.addBottles(Arrays.asList(bottle));
         assertEquals(bottle.getId(), bottleService.fetchAll().get(0).getId());

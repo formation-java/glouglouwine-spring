@@ -21,7 +21,7 @@ public class H2BottleRepository implements BottleRepository {
             Timestamp finishingDate = resultSet.getTimestamp("finishing_date");
             return new Bottle(resultSet.getLong("id"), resultSet.getString("owner"),
                     GrapeTypes.valueOf(resultSet.getString("grape_type")), resultSet.getString("domain_name"),
-                    resultSet.getInt("year"), resultSet.getInt("quantity"),
+                    resultSet.getString("year"), resultSet.getInt("quantity"),
                     resultSet.getTimestamp("opening_date").toLocalDateTime(),
                     finishingDate != null ? finishingDate.toLocalDateTime() : null);
         }
@@ -33,7 +33,7 @@ public class H2BottleRepository implements BottleRepository {
     private BottleMapper bottleMapper = new BottleMapper();
 
     @Override
-    public void addBlotte(Bottle bottle) {
+    public void addBottle(Bottle bottle) {
         //        if(bottle.getOwner().equals("Eric")) {
         //            throw new RuntimeException("Eric can't drink");
         //        }
