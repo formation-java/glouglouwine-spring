@@ -46,7 +46,7 @@ public class BottleEndpointTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string("[{\"id\":1,\"owner\":\"Saulnoz\",\"grapeType\":\"MALBEC\"," +
-                        "\"domain\":\"Chateau truc\",\"year\":1979,\"percentage\":100.0,\"openingDate\":null," +
+                        "\"domain\":\"Chateau truc\",\"year\":1979,\"quantity\":100.0,\"openingDate\":null," +
                         "\"finishingDate\":null}]"));
     }
 }
