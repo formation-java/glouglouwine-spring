@@ -29,7 +29,6 @@ public class BottleServiceTest {
         }
     }
 
-//    @MockBean
     @Inject
     private BottleService bottleService;
 
@@ -38,6 +37,6 @@ public class BottleServiceTest {
         Bottle bottle = new Bottle(1, "Saulnoz", MALBEC, "Chateau truc", "1979",
                 100,null, null);
         bottleService.addBottles(Arrays.asList(bottle));
-        assertEquals(bottle.getId(), bottleService.fetchAll().get(0).getId());
+        assertEquals(bottle.getBottleId(), bottleService.fetchAll().get(0).getBottleId());
     }
 }

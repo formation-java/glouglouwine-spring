@@ -16,12 +16,12 @@ import static org.junit.Assert.assertEquals;
 @SpringBootTest
 public class GlouGlouWineApplicationTest {
 
+	@Inject
+	private H2BottleRepository h2BottleRepository;
+
 	@Test
 	public void contextLoads() {
 	}
-
-	@Inject
-	private H2BottleRepository h2BottleRepository;
 
 	@Test
 	public void test() {

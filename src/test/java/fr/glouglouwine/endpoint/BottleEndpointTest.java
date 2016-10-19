@@ -17,15 +17,14 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static org.hamcrest.core.Is.is;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-//@WebMvcTest(BottleEndpoint.class)
 public class BottleEndpointTest {
 
     @Inject
@@ -45,8 +44,23 @@ public class BottleEndpointTest {
         mvc.perform(get("/bottle")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string("[{\"id\":1,\"owner\":\"Saulnoz\",\"grapeType\":\"MALBEC\"," +
+                .andExpect(content().string("[{\"bottleId\":1,\"owner\":\"Saulnoz\",\"grapeType\":\"MALBEC\"," +
                         "\"domain\":\"Chateau truc\",\"year\":\"1979\",\"quantity\":100.0,\"openingDate\":null," +
                         "\"finishingDate\":null}]"));
     }
+
+    @Test
+    public void testJson() throws Exception {
+        Bottle bottle = new Bottle(1, "Saulnoz", GrapeTypes.MALBEC, "Chateau truc", "1979",
+                100, null, null);
+
+        given(bottleService.fetchAll())
+                .willReturn(new ArrayList<>(Arrays.asList(bottle)));
+
+        mvc.perform(get("/bottle")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].owner", is("Saulnoz")));
+    }
+
 }
