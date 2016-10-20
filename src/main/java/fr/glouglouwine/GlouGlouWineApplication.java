@@ -22,21 +22,23 @@ public class GlouGlouWineApplication {
     }
 
     // initialize or not
-    @Value("${db.filesPath}")
-    public String dbFilesPath;
+    @Value("${db.init}")
+    public Boolean dbInit;
 
     @PostConstruct
     public void init() {
-        System.out.println(dbFilesPath);
+        System.out.println("hello");
     }
 
     @Bean
     public DataSource dataSource() {
-        return new EmbeddedDatabaseBuilder()
+        EmbeddedDatabaseBuilder edb = new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.H2)
-                .addScript("classpath:sql/schema.sql")
-                .addScript("classpath:sql/start-data.sql")
-                .build();
+                .addScript("classpath:sql/schema.sql");
+        if (dbInit) {
+            edb.addScript("classpath:sql/start-data.sql");
+        }
+        return edb.build();
     }
 
     @Bean
