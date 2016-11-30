@@ -33,7 +33,7 @@ public class GlouGlouWineApplication {
     @Bean
     public DataSource dataSource() {
         EmbeddedDatabaseBuilder edb = new EmbeddedDatabaseBuilder()
-                .setType(EmbeddedDatabaseType.H2)
+                .setType(EmbeddedDatabaseType.HSQL)
                 .addScript("classpath:sql/schema.sql");
         if (dbInit) {
             edb.addScript("classpath:sql/start-data.sql");

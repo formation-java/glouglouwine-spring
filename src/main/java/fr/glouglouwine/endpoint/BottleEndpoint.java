@@ -33,12 +33,12 @@ public class BottleEndpoint {
         return "glou glou";
     }
 
-    @RequestMapping("/bottle")
+    @RequestMapping("/bottles")
     public List<Bottle> getBottles() {
         return bottleService.fetchAll();
     }
 
-    @RequestMapping(value = "/bottle", method = RequestMethod.POST)
+    @RequestMapping(value = "/bottles", method = RequestMethod.POST)
     public ResponseEntity<AddBottleResponse> addBottle(@RequestBody List<Bottle> bottles) {
         bottleService.addBottles(bottles);
         return ResponseEntity.ok(new AddBottleResponse(applicationGlobalState.getTotalBottlesAdded(),

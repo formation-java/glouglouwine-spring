@@ -23,7 +23,7 @@ public class H2BottleRepositoryTest {
     @Test
     public void test() {
         List<Bottle> bottles = h2BottleRepository.fetchAll();
-        assertEquals(3, bottles.size());
+        assertEquals(0, bottles.size());
     }
 
 }
