@@ -5,17 +5,21 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
 import javax.sql.DataSource;
 import java.time.format.DateTimeFormatter;
 
 @SpringBootApplication
-public class GlouGlouWineApplication {
+public class GlouGlouWineApplication implements ServletContextInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(GlouGlouWineApplication.class, args);
@@ -47,5 +51,14 @@ public class GlouGlouWineApplication {
         b.serializers(new LocalDateTimeSerializer(DateTimeFormatter.ISO_DATE_TIME));
         b.deserializers(new LocalDateTimeDeserializer(DateTimeFormatter.ISO_DATE_TIME));
         return b;
+    }
+
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        // FIXME si je remove la conf ?
+        ServletRegistration.Dynamic h2ConsoleServlet = servletContext.addServlet("H2Console", new org.h2.server.web.WebServlet());
+        h2ConsoleServlet.addMapping("/h2-console/*");
+        h2ConsoleServlet.setInitParameter("-properties", "src/main/resources/");
+        h2ConsoleServlet.setLoadOnStartup(1);
     }
 }
