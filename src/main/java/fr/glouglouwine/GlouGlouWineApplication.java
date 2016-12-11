@@ -6,12 +6,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GlouglouApplication {
+public class GlouGlouWineApplication {
 
-	private static final Logger logger = LoggerFactory.getLogger(GlouglouApplication.class);
+	private static final Logger logger = LoggerFactory.getLogger(GlouGlouWineApplication.class);
 
 	public static void main(String[] args) {
-		SpringApplication.run(GlouglouApplication.class, args);
+		SpringApplication.run(GlouGlouWineApplication.class, args);
 	}
 
 }
