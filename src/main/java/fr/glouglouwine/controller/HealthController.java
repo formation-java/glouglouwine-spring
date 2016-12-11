@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HealthController {
 
-    @RequestMapping("/")
+    @RequestMapping("/test")
     public String healthCheck() {
         return "hello you, I'm great !";
     }
