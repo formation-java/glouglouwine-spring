@@ -2,6 +2,7 @@ package fr.glouglouwine;
 
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,9 +30,12 @@ public class GlouGlouWineApplication implements ServletContextInitializer {
     @Value("${db.init}")
     public Boolean dbInit;
 
+    @Autowired
+    private DataSource ds;
+
     @PostConstruct
     public void init() {
-        System.out.println("hello");
+        System.out.println(ds);
     }
 
     @Bean
