@@ -5,6 +5,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+// This is useless here, and just slows down the test running =)
+// @RunWith(SpringRunner.class)
+// @SpringBootTest
 public class BottleHashmapRepositoryTest {
 
     private BottleHashmapRepository bottleRepository = new BottleHashmapRepository();

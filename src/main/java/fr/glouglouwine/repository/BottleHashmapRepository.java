@@ -1,12 +1,14 @@
 package fr.glouglouwine.repository;
 
 import fr.glouglouwine.dto.Bottle;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class BottleHashmapRepository implements BottleRepository {
+@Repository
+public class BottleHashmapRepository {
 
     private ConcurrentHashMap<Long, Bottle> bottles = new ConcurrentHashMap<>();
 
@@ -21,4 +23,5 @@ public class BottleHashmapRepository implements BottleRepository {
     public List<Bottle> getAll() {
         return new ArrayList(bottles.values());
     }
+
 }
