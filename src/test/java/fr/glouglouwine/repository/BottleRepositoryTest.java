@@ -8,9 +8,9 @@ import static org.junit.Assert.assertEquals;
 // This is useless here, and just slows down the test running =)
 // @RunWith(SpringRunner.class)
 // @SpringBootTest
-public class BottleHashmapRepositoryTest {
+public class BottleRepositoryTest {
 
-    private BottleHashmapRepository bottleRepository = new BottleHashmapRepository();
+    private BottleRepository bottleRepository = new BottleRepository();
 
     @Test
     public void test() throws Exception {
@@ -21,7 +21,8 @@ public class BottleHashmapRepositoryTest {
         bottleRepository.create(bottle);
 
         assertEquals(1, bottleRepository.getAll().size());
-        assertEquals(1L, bottleRepository.getAll().get(0).getId());
+        // not autoboxing won't work here =(
+        assertEquals(new Long(1L), bottleRepository.getAll().get(0));
 
         assertEquals("Saulnoz", bottleRepository.get(1L).getOwner());
         assertEquals("Chateau Lapompe", bottleRepository.get(1L).getDomain());
