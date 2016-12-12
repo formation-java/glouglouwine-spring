@@ -11,5 +11,5 @@ public interface BottleRepository {
     Bottle get(Long id);
 
     List<Bottle> getAll();
-    
+
 }
