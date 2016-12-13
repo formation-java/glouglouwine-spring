@@ -1,10 +1,13 @@
 package fr.glouglouwine.dto;
 
+import java.time.LocalDateTime;
+
 public class Bottle {
 
     private long id;
     private String owner;
     private String domain;
+    private LocalDateTime openingDate;
 
     Bottle() {
     }
@@ -37,5 +40,13 @@ public class Bottle {
 
     public void setDomain(String domain) {
         this.domain = domain;
+    }
+
+    public LocalDateTime getOpeningDate() {
+        return openingDate;
+    }
+
+    public void setOpeningDate(LocalDateTime openingDate) {
+        this.openingDate = openingDate;
     }
 }
