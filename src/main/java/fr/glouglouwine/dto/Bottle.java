@@ -18,6 +18,13 @@ public class Bottle {
         this.domain = domain;
     }
 
+    public Bottle(long id, String owner, String domain, LocalDateTime openingDate) {
+        this.id = id;
+        this.owner = owner;
+        this.domain = domain;
+        this.openingDate = openingDate;
+    }
+
     public long getId() {
         return id;
     }
