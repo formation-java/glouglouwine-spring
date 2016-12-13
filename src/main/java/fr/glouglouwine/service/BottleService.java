@@ -5,6 +5,7 @@ import fr.glouglouwine.repository.BottleRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class BottleService {
     private static final Logger logger = LoggerFactory.getLogger(BottleService.class);
 
     @Autowired
+    @Qualifier("bottleH2Repository")
     private BottleRepository bottleRepository;
 
     public Bottle get(Long id) {

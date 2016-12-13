@@ -1,7 +1,6 @@
 package fr.glouglouwine.controller;
 
 import fr.glouglouwine.dto.Bottle;
-import fr.glouglouwine.repository.BottleRepository;
 import fr.glouglouwine.service.BottleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
