@@ -1,7 +1,7 @@
 package fr.glouglouwine.service;
 
 import fr.glouglouwine.dto.Bottle;
-import fr.glouglouwine.repository.BottleRepository;
+import fr.glouglouwine.repository.BottleHashmapRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +20,7 @@ import static org.mockito.BDDMockito.given;
 public class BottleServiceTest {
 
     @MockBean
-    private BottleRepository bottleRepository;
+    private BottleHashmapRepository bottleRepository;
 
     @Autowired
     private BottleService bottleService;

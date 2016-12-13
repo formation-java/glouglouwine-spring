@@ -8,9 +8,9 @@ import static org.junit.Assert.assertEquals;
 // This is useless here, and just slows down the test running =)
 // @RunWith(SpringRunner.class)
 // @SpringBootTest
-public class BottleRepositoryTest {
+public class BottleHashmapRepositoryTest {
 
-    private BottleRepository bottleRepository = new BottleRepository();
+    private BottleHashmapRepository bottleRepository = new BottleHashmapRepository();
 
     @Test
     public void test() throws Exception {
